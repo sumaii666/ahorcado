@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Material icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/styles/style.css">
+
+    <title>pokemonos</title>
+
+</head>
+
+<body>
+
+    <div id="game_modal">
+
+        <div class="content">
+
+            <h4>GAME OVER</h4>
+            <p>The correct word was: <b>rainbow</b></p>
+            <button id="play_again">Play Again</button>
+
+        </div>
+
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Block #001 || Hangman -->
+        <div class="block_001">
+
+            <!-- Image Container -->
+            <img id="img_container" src="../assets/images/0.png" alt="">
+
+            <!-- Word Container -->
+            <div id="word_container"></div>
+
+            <!-- Hint Container -->
+            <div id="hint_container"></div>
+            
+            <!-- Title -->
+             <h2>CHOOSE A LETTER</h2>
+
+             <!-- Keyboard Container -->
+             <div id="keyboard_container"></div>
+ 
+             <!-- Try Container -->
+             <h5>Number of attempts<span id="try_container">0 / 6</span></h5>
+
+        </div>
+
+    
+
+           
+
+        </div>
+
+    </div>
+
+    <script type="module" src="../src/index.js"></script>
+
+</body>
+
+</html>
