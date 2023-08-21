@@ -67,6 +67,7 @@ body
 #img_container
 {
     width: 60%;
+    filter: brightness(0);
 }
 
 /* WORD */
@@ -205,3 +206,4 @@ body
 {
 
 }
+

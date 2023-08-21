@@ -1,18 +1,25 @@
-import (pokemon)
+
+import { Pokemon } from "./api/pokemon-api.js";
+
+const pokemon = new Pokemon();
 
 var wrongGuesses;
 const maxGuesses = 6;
 var currentWord;
 var correctLetters;
 
-// - - - - - - - - - - || FUNCTIONS || - - - - - - - - - - //
+const keyboardContainer = document.getElementById("keyboard_container");
+const wordContainer = document.getElementById("word_container");
+const imgContainer = document.getElementById("img_container");
+const tryContainer = document.getElementById("try_container");
+const gameModal = document.getElementById("game_modal");
+const playAgain = document.getElementById("play_again");
 
 const resetGame = () => {
 
     correctLetters =[];
     wrongGuesses = 0;
 
-    imgContainer.src = hangman.images[wrongGuesses];
     tryContainer.textContent = `${wrongGuesses} / ${maxGuesses}`;
 
     keyboardContainer.querySelectorAll("button").forEach(btn => btn.disabled = false);
@@ -23,18 +30,12 @@ const resetGame = () => {
     gameModal.classList.remove("show");
 }
 
-function displayWord()
+async function displayWord()
 {
-    //Get a random word and hint . . . 
-    const randomWord = word.wordList[Math.floor(Math.random() * word.wordList.length)];
+    const traerPokemon = await pokemon.obtenerDatosAwait();
+    currentWord = traerPokemon.name;
 
-    currentWord = randomWord.word;
-    console.log(randomWord.word);
-
-    //Display hint . . .
-    const span = document.createElement("span");
-    span.textContent = "(" + randomWord.hint + ")";
-    hintContainer.appendChild(span);
+    imgContainer.src = traerPokemon.sprites.versions[`generation-v`][`black-white`].animated[`front_default`];
 
     resetGame();
 }
@@ -52,8 +53,6 @@ const gameOver = (isVictory) => {
 
 }
 
-
-
 const initGame = (button, clickedLetter) => {
 
     if(currentWord.includes(clickedLetter))
@@ -70,7 +69,6 @@ const initGame = (button, clickedLetter) => {
     else
     {
         wrongGuesses++;
-        imgContainer.src = hangman.images[wrongGuesses];
     }
 
     button.disabled = true;
@@ -95,5 +93,8 @@ function displayKeyboard()
 displayWord();
 displayKeyboard();
 playAgain.addEventListener("click", displayWord);
+
+
+
 
 
